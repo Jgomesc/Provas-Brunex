@@ -1,34 +1,50 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import "./index.sass";
 
 const Index = () => {
-	const [data, setData] = useState("");
-	const [libra, setLibra] = useState(false);
+	const [mes, setMes] = useState("");
+	const [dia, setDia] = useState(1);
+	const [libra, setLibra] = useState("Não é de libra");
 
-	useEffect(() => {
-		let mes = Number(data.substring(5, 7));
-		let dia = Number(data.substring(8, 10));
-
-		console.log("dia: ", dia, "mes: ", mes);
-
-		if (mes >= 9 && dia >= 23 ) {
-			setLibra(true);
-		} else if (mes <= 10 && dia <= 22) {
-			setLibra(true);
+	function verificar() {
+		console.log(dia, "Mês: ", mes);
+		if (mes === "Setembro" && dia > 22) {
+			setLibra("É de libra");
+		} else if (mes === "Outubro" && dia < 23) {
+			setLibra("É de libra");
 		} else {
-			setLibra(false);
+			setLibra("Não é de libra");
 		}
-	}, [data]);
+	}
 
 	return (
 		<div className="libra">
 			<main>
 				<h1>Signo</h1>
 				<div>
-					<input type="date" value={data} onChange={(e) => setData(e.target.value)} />
+					Dia: <input type="number" placeholder="Dia" min="1" max="31" value={dia} onChange={(e) => setDia(e.target.value)} />
+					<br />
+					Mes:
+					<select defaultValue="Selecione" onChange={(e) => setMes(e.target.value)}>
+						<option value="Selecione" disabled="disabled">
+							Selecione
+						</option>
+						<option value="Janeiro">Janeiro</option>
+						<option value="Fevereiro">Fevereiro</option>
+						<option value="Março">Março</option>
+						<option value="Abril">Abril</option>
+						<option value="Maio">Maio</option>
+						<option value="Junho">Junho</option>
+						<option value="Julho">Julho</option>
+						<option value="Agosto">Agosto</option>
+						<option value="Setembro">Setembro</option>
+						<option value="Outubro">Outubro</option>
+						<option value="Novembro">Novembro</option>
+						<option value="Dezembro">Dezembro</option>
+					</select>
+					<button onClick={() => verificar()}>Verificar</button>
 				</div>
-				<div className="resultado">{libra ? "É de libra" : "Não é de libra"}</div>
+				<div className="resultado">{libra}</div>
 			</main>
 		</div>
 	);

@@ -14,9 +14,9 @@ const Index = () => {
 		}
 
 		if (grama > 1000) {
-			setResult(grama * 0.035);
-		} else {
 			setResult(grama * 0.03);
+		} else {
+			setResult(grama * 0.035);
 		}
 	}
 

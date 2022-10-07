@@ -4,9 +4,15 @@ import "./index.sass";
 const Index = () => {
 	const [grama, setGrama] = useState(0);
 	const [result, setResult] = useState(0);
+	const [erro, setErro] = useState("");
 
 	function verificar() {
-		console.log(result);
+		if (grama <= 0) {
+			setErro("Peso inválido");
+		} else {
+			setErro("");
+		}
+
 		if (grama > 1000) {
 			setResult(grama * 0.035);
 		} else {
@@ -19,7 +25,7 @@ const Index = () => {
 			<main>
 				<h1>Sorvete</h1>
 				<div>
-					Gramas: <input type="number" value={grama} onChange={(e) => setGrama(e.target.value)} />
+					Gramas: <input type="number" value={grama} onChange={(e) => setGrama(e.target.value)} min="1" />
 					<br />
 					<button onClick={() => verificar()}>Verificar</button>
 				</div>
@@ -29,6 +35,8 @@ const Index = () => {
 						minimumFractionDigits: 2,
 						maximumFractionDigits: 2,
 					})}
+					<br />
+					{erro}
 				</div>
 			</main>
 		</div>

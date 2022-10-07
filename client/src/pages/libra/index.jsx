@@ -8,9 +8,9 @@ const Index = () => {
 
 	function verificar() {
 		console.log(dia, "Mês: ", mes);
-		if (mes === "Setembro" && dia > 22) {
+		if (mes === "Setembro" && dia > 23) {
 			setLibra("É de libra");
-		} else if (mes === "Outubro" && dia < 23) {
+		} else if (mes === "Outubro" && dia < 22) {
 			setLibra("É de libra");
 		} else {
 			setLibra("Não é de libra");

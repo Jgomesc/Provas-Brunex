@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './index.sass'
+import "./index.sass";
 
 const rotas = [
 	{
@@ -15,18 +15,32 @@ const rotas = [
 		nome: "Calcular valor do sorvete",
 		rota: "sorvete",
 	},
+	{
+		nome: "Calcular o salário",
+		rota: "salario",
+	},
+	{
+		nome: "Calcular paradas",
+		rota: "consumo",
+	},
+	{
+		nome: "Febre",
+		rota: "febre"
+	}
 ];
 
 const Index = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="home" >
+		<div className="home">
 			<main>
 				<h1>Menu de navegação</h1>
 				<ul>
 					{rotas.map((item) => (
-						<li onClick={() => navigate(`/${item.rota}`)} key={item.nome} >{item.nome}</li>
+						<li onClick={() => navigate(`/${item.rota}`)} key={item.nome}>
+							{item.nome}
+						</li>
 					))}
 				</ul>
 			</main>
